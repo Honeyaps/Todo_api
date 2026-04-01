@@ -6,8 +6,8 @@ import { TodoCreate, TodoDelete, TodoGetAll, TodoGetById, TodoUpdate } from "../
 
 export const TodoRoute = (router) => {
   router.post("/todoCreate", TodoCreate);
-  router.get("/todos", TodoGetAll);
-  router.get("/todos/:id", TodoGetById);
-  router.put("/todos/:id", TodoUpdate);
-  router.delete("/todos/:id", TodoDelete);
+  router.get("/todosGetAll", TodoGetAll);
+  router.get("/todosGet/:id", TodoGetById);
+  router.put("/todosUpdate/:id", TodoUpdate);
+  router.delete("/todosDelete/:id", TodoDelete);
 };

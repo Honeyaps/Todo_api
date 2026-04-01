@@ -1,6 +1,6 @@
 import TodoModel from "../../config/schema/toDoSchema.js";
 
-// Create Todo
+
 export const TodoCreate = async (req, res) => {
   try {
     const todo = new TodoModel(req.body);
@@ -11,7 +11,7 @@ export const TodoCreate = async (req, res) => {
   }
 };
 
-// Get All Todos
+
 export const TodoGetAll = async (req, res) => {
   try {
     const todos = await TodoModel.find();
@@ -21,7 +21,7 @@ export const TodoGetAll = async (req, res) => {
   }
 };
 
-// Get Todo by ID
+
 export const TodoGetById = async (req, res) => {
   try {
     const todo = await TodoModel.findById(req.params.id);
@@ -32,7 +32,7 @@ export const TodoGetById = async (req, res) => {
   }
 };
 
-// Update Todo
+
 export const TodoUpdate = async (req, res) => {
   try {
     const updatedTodo = await TodoModel.findByIdAndUpdate(
@@ -47,7 +47,7 @@ export const TodoUpdate = async (req, res) => {
   }
 };
 
-// Delete Todo
+
 export const TodoDelete = async (req, res) => {
   try {
     const deletedTodo = await TodoModel.findByIdAndDelete(req.params.id);
