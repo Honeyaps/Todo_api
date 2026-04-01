@@ -1,28 +1,28 @@
+import mongoose from "mongoose";
 
-// import mongoose from "mongoose";
-// // import env from "../../infrastructure/env.js";
+export const dbconnection = async () => {
+ const MONGO_URL =
+"mongodb://honeyaps12345_db_user:Honey2100@ac-8kb6asg-shard-00-00.cqubytl.mongodb.net:27017,ac-8kb6asg-shard-00-01.cqubytl.mongodb.net:27017,ac-8kb6asg-shard-00-02.cqubytl.mongodb.net:27017/?ssl=true&replicaSet=atlas-7755o7-shard-0&authSource=admin&retryWrites=true&w=majority";
 
+  const options = {
+    serverSelectionTimeoutMS: 20000,
+    connectTimeoutMS: 60000,
+  };
 
-// export const dbconnection = async() => {
-//   const options = {
-//     serverSelectionTimeoutMS: 20000,
-//     connectTimeoutMS: 60000, 
-//   };
-//   await mongoose
-//     .connect(env.MONGO_URL, options)
-//     .then((res) => {
-//       console.log(`Mongo DB Connected Successfully. ` + env.MONGO_URL);
-//     })
-//     .catch((err) => {
-//       console.error(`Something went wrong in Mongo DB Connection`, err);
-//     });
+  try {
+    await mongoose.connect(MONGO_URL, options);
 
-//   mongoose.set("debug", (collectionName, method, query, doc) => {
-//     console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
-//   });
+    console.log("MongoDB Connected Successfully 🚀");
 
-//   const db = mongoose.connection;
-// };
+    mongoose.set("debug", (collectionName, method, query, doc) => {
+      console.log(
+        `${collectionName}.${method}`,
+        JSON.stringify(query),
+        doc || ""
+      );
+    });
 
-
-
+  } catch (error) {
+    console.error("MongoDB Connection Error:", error.message);
+  }
+};
