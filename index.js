@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { dbconnection } from "./src/api/config/db.js";
+import { createRouter } from "./src/infrastructure/routes.js";
 
 const app = express();
 const port = 4000;
@@ -27,9 +28,7 @@ app.get("/", (req, res) => {
   res.send("API working successfully 🚀");
 });
 
-app.use("/v2", (req, res) => {
-  res.status(404).send("Not Found");
-});
+app.use("/v2", createRouter());
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
