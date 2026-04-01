@@ -2,9 +2,10 @@ import cors from "cors";
 import express from "express";
 import { dbconnection } from "./src/api/config/db.js";
 import { createRouter } from "./src/infrastructure/routes.js";
+import env from "./src/infrastructure/env.js";
 
 const app = express();
-const port = 4000;
+const port = env.APPPORT;
 
 app.use(
   cors({
