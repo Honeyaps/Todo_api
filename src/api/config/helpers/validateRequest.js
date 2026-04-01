@@ -1,6 +1,5 @@
-import { ErrorResponse } from "./apiResponse.js";
 
-const validate = (schema) => async (req, res, next) => {
+export const validateRequest = (schema) => async (req, res, next) => {
   try {
     await schema.validate({
       body: req.body,
@@ -14,8 +13,6 @@ const validate = (schema) => async (req, res, next) => {
     if (error instanceof Error) {
       errorMessage = error.message;
     }
-    return ErrorResponse(res, errorMessage);
+    return res.status(400).json({ error: errorMessage });
   }
 };
-
-export default validate;
