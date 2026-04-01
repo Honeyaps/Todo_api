@@ -1,12 +1,7 @@
 import cors from "cors";
 import express from "express";
-// import { dbconnection } from "./src/api/config/db.js";
-// import { createRouter } from "./src/infrastructure/route.js";
-// import env from "./src/infrastructure/env.js";
-
 
 const app = express();
-const port = 4000
 
 app.use(
   cors({
@@ -24,19 +19,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// dbconnection();
-
-app.get('/', (req, res) => {
-  console.log('Example endpoint hit');
-  res.send('This is an example endpoint!');
+app.get("/", (req, res) => {
+  res.send("API working successfully 🚀");
 });
-
-// app.use("/v2", createRouter());
 
 app.use("/v2", (req, res) => {
   res.status(404).send("Not Found");
 });
 
-app.listen(port, () => {
-  console.log(`APP listening on port:${port}`); 
-});
+export default app;
