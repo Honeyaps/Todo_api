@@ -6,7 +6,7 @@ import { TodoCreate, TodoDelete, TodoGetAll, TodoGetById, TodoUpdate } from "../
 import { TodoCreateValidate, TodoIdParamsValidate } from "../../config/helpers/validator.js";
 
 export const TodoRoute = (router) => {
-  router.post("/todoCreate", validateRequest(TodoCreateValidate), TodoCreate);
+  router.post("/todoCreate", TodoCreate);
   router.get("/todosGetAll", TodoGetAll);
   router.get("/todosGet/:id?", validateRequest(TodoIdParamsValidate), TodoGetById);
   router.put("/todosUpdate/:id?",validateRequest(TodoCreateValidate) ,TodoUpdate);
